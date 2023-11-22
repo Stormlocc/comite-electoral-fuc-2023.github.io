@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Agrega aquí tus estilos CSS -->
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <!-- Columna de imágenes -->
+      <div class="col-md-4">
+        <img src="imagen1.jpg" alt="Imagen 1">
+        <img src="imagen2.jpg" alt="Imagen 2">
+      </div>
+      <!-- Columna del formulario (inicialmente oculta) -->
+      <div class="col-md-8" id="formulario" style="display: none;">
+        <!-- Aquí coloca el código de tu formulario -->
+        <h2>Formulario Restringido</h2>
+        <form>
+          <!-- Campos del formulario -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agrega aquí tus scripts JavaScript -->
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+  <script>
+    // Configuración de Firebase (reemplaza con la configuración de tu proyecto)
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      // ...otros detalles de configuración
+    };
+      
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Verificar el estado de autenticación
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // Usuario autenticado, muestra el formulario
+        document.getElementById('formulario').style.display = 'block';
+      } else {
+        // Usuario no autenticado, redirige a la página de inicio de sesión de Google
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithRedirect(provider);
+      }
+    });
+  </script>
+</body>
+</html>

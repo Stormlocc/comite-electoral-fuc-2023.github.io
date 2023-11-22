@@ -1,64 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <title>Formulario restringido</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Bienvenido al sitio</h1>
-      <div class="row">
-        <!-- Columna de imágenes -->
-        <div class="column">
-          <img src="imagen1.jpg" alt="Imagen 1">
-        </div>
-        <div class="column">
-          <img src="imagen2.jpg" alt="Imagen 2">
-        </div>
-        <!-- Columna del formulario (inicialmente oculta) -->
-        <div class="column" id="formulario" style="display: none;">
-          <h2>Formulario Restringido</h2>
-          <form>
-            <!-- Aquí coloca los campos de tu formulario -->
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre"><br><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email"><br><br>
-            <!-- ...otros campos -->
-            <input type="submit" value="Enviar">
-          </form>
-        </div>
+  <meta charset="UTF-8">
+  <title>Formulario restringido</title>
+  <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido al sitio</h1>
+    <div class="row">
+      <!-- Columna de imágenes -->
+      <div class="column">
+        <img src="img/RA.png" alt="Imagen 1">
+      </div>
+      <div class="column">
+        <img src="img/KA.png" alt="Imagen 2">
+      </div>
+      <!-- Columna del formulario (inicialmente oculta) -->
+      <div class="column" id="formulario">
+        <!-- Código de inserción del formulario de Google -->
+        <iframe src="https://forms.gle/sApbmzHR6JuDyura6" width="640" height="780" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
       </div>
     </div>
-  
-    <!-- Agrega aquí los scripts JavaScript -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
-    <script>
-      // Configuración de Firebase (reemplaza con la configuración de tu proyecto)
-      const firebaseConfig = {
-        apiKey: "TU_API_KEY",
-        authDomain: "TU_AUTH_DOMAIN",
-        projectId: "TU_PROJECT_ID",
-        // ...otros detalles de configuración
-      };
-        
-      // Inicializa Firebase
-      firebase.initializeApp(firebaseConfig);
-  
-      // Verificar el estado de autenticación
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          // Usuario autenticado, muestra el formulario
-          document.getElementById('formulario').style.display = 'block';
-        } else {
-          // Usuario no autenticado, redirige a la página de inicio de sesión de Google
-          const provider = new firebase.auth.GoogleAuthProvider();
-          firebase.auth().signInWithRedirect(provider);
-        }
-      });
-    </script>
-  </body>
-  </html>
+  </div>
+
+  <!-- Agrega aquí los scripts JavaScript -->
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+  <script>
+    // Configuración de Firebase (reemplaza con la configuración de tu proyecto)
+    const firebaseConfig = {
+      apiKey: "AIzaSyB6SueBuSjb98osBIADl4P3pZj3NNU8wo4",
+      authDomain: "https://comite-electoral-fuc-2023.github.io/",
+      projectId: "comite-electoral-f0f79",
+      // ...otros detalles de configuración
+    };
+    
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Verificar el estado de autenticación
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // Usuario autenticado, muestra el formulario
+        document.getElementById('formulario').style.display = 'block';
+      } else {
+        // Usuario no autenticado, redirige a la página de inicio de sesión de Google
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithRedirect(provider);
+      }
+    });
+  </script>
+</body>
+</html>
